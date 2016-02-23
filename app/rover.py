@@ -14,6 +14,16 @@ class Rover:
         elif self._heading == 'W':
             self._heading = 'S'
 
+    def rotate_right(self):
+        if self._heading == 'N':
+            self._heading = 'E'
+        elif self._heading == 'E':
+            self._heading = 'S'
+        elif self._heading == 'S':
+            self._heading = 'W'
+        elif self._heading == 'W':
+            self._heading = 'N'
+
     def is_heading_west(self):
         return self._heading == 'W'
 
