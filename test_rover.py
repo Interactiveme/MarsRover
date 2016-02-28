@@ -1,25 +1,21 @@
 from app.rover import Rover
-from app.movement import Movement
-
 
 class TestRover:
+    def test_rover_can_move_forward(self):
+        rover = Rover(5, 5, 'N')
+        rover.move_forward()
+        current = rover.get_current_location()
+        assert current['y'] == 6
 
-    # def test_rover_can_move_forward(self):
-    #     rover = Rover(5, 5, 'N')
-    #     rover.move_forward()
-    #     current = rover.get_current_location()
-    #     assert current['y'] == 6
-    #
-    #     rover.rotate_left()
-    #     rover.move_forward()
-    #     current = rover.get_current_location()
-    #     assert current['y'] == 6
-    #     assert current['x'] == 4
-    #     assert current['heading'] == 'W'
+        rover.rotate_left()
+        rover.move_forward()
+        current = rover.get_current_location()
+        assert current['y'] == 6
+        assert current['x'] == 4
+        assert current['heading'] == 'W'
 
     def test_rover_can_rotate_left(self):
-        move = Movement(5, 5, 'N')
-        rover = Rover(move)
+        rover = Rover(5, 5, 'N')
         headings = ['N', 'W', 'S', 'E', 'N', 'W', 'S', 'E']
 
         for i in headings:
@@ -38,9 +34,9 @@ class TestRover:
                 assert location['heading'] == 'S'
 
     def test_rover_can_rotate_right(self):
-        move = Movement(5, 5, 'N')
-        rover = Rover(move)
+        rover = Rover(5, 5, 'N')
         headings = ['N', 'E', 'S', 'W', 'N', 'E', 'S', 'W']
+
         for i in headings:
             rover.rotate_right()
             location = rover.get_current_location()
